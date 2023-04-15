@@ -1,0 +1,51 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE tiles-definitions PUBLIC  "-//Apache Software Foundation//DTD Tiles Configuration 3.0//EN" "http://tiles.apache.org/dtds/tiles-config_3_0.dtd">
+
+<tiles-definitions>
+
+	<definition name="baseLayout"     template="/WEB-INF/views/common/layout/layout.jsp"> 		
+		<put-attribute name="header" 	value="/WEB-INF/views/common/layout/header.jsp" />			
+		<put-attribute name="footer" 	value="/WEB-INF/views/common/layout/footer.jsp" />			
+	</definition>
+	
+	<definition name="/main"   extends="baseLayout"> 		
+		<put-attribute name="title" 	value="ITings" />			
+		<put-attribute name="body" 		value="/WEB-INF/views/common/layout/main.jsp" />			
+	</definition>
+	
+	<definition name="/contact" extends="baseLayout">
+		<put-attribute name="title" value="문의하기" />
+		<put-attribute name="body" value="/WEB-INF/views/common/contact/contact.jsp" />
+	</definition>
+	
+	<definition name="/contactList" extends="baseLayout">
+		<put-attribute name="title" value="문의관리" />
+		<put-attribute name="body" value="/WEB-INF/views/common/contact/contactList.jsp" />
+	</definition>
+	
+	<definition name="/notice" extends="baseLayout">
+		<put-attribute name="title" value="공지등록" />
+		<put-attribute name="body" value="/WEB-INF/views/common/notice/notice.jsp" />
+	</definition>
+	
+	<definition name="/noticeList" extends="baseLayout">
+		<put-attribute name="title" value="공지관리" />
+		<put-attribute name="body" value="/WEB-INF/views/common/notice/noticeList.jsp" />
+	</definition>
+	
+	<definition name="/contactDetail" extends="baseLayout">
+		<put-attribute name="title" value="문의글 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/common/contact/contactDetail.jsp" />
+	</definition>
+	
+	<definition name="/noticeDetail" extends="baseLayout">
+		<put-attribute name="title" value="공지글 상세" />
+		<put-attribute name="body" value="/WEB-INF/views/common/notice/noticeDetail.jsp" />
+	</definition>
+	
+	<definition name="/companyMap" extends="baseLayout">
+		<put-attribute name="title" value="회사위치" />
+		<put-attribute name="body" value="/WEB-INF/views/common/layout/companyMap.jsp" />
+	</definition>
+	
+</tiles-definitions>

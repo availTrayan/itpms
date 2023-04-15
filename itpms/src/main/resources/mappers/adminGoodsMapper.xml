@@ -1,0 +1,102 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="admin.goods">
+
+	<select id="selectListGoods" resultType="GoodsDto">
+		SELECT
+				*
+		FROM
+				GOODS
+	</select>
+	
+	<insert id="insertGoods" parameterType="GoodsDto">
+		INSERT INTO 
+			GOODS (
+					GOODS_NM,
+					COMPANY,
+					PRICE,
+					DISCOUNT_RATE,
+					STOCK,
+					SORT,
+					POINT,
+					PUBLISHED_DT,
+					DELIVERY_PRICE,
+					CATEGORY,
+					GOODS_SPEC,
+					INTRO,
+					GOODS_FILE_NAME,
+					ENROLL_DT
+					)
+			VALUES(
+					#{goodsNm},
+					#{company},
+					#{price},
+					#{discountRate},
+					#{stock},
+					#{sort},
+					#{point},
+					#{publishedDt},
+					#{deliveryPrice},
+					#{category},
+					#{goodsSpec},
+					#{intro},
+					#{goodsFileName},
+					NOW()
+			);	
+				
+	</insert>
+	
+	<update id="updateGoods" parameterType="GoodsDto" >
+	   UPDATE 
+	   			GOODS
+	   <set> 
+	      <if test='goodsNm != null and goodsNm != ""'>
+	        GOODS_NM = #{goodsNm},
+	      </if>
+	      <if test='company != null and company != ""'>
+	        COMPANY = #{company},
+	      </if>
+	      <if test='price != null and price != ""'>
+	        PRICE = #{price},
+	      </if>
+	      <if test='discountRate != null and discountRate != ""'>
+	        DISCOUNT_RATE = #{discountRate},
+	      </if>
+	      <if test='stock != null and stock != ""'>
+	        STOCK = #{stock},
+	      </if>
+	      <if test='sort != null and sort != ""'>
+	        SORT = #{sort},
+	      </if>
+	      <if test='point != null and point != ""'>
+	        POINT = #{point},
+	      </if>
+	      <if test='publishedDt != null'>
+	        PUBLISHED_DT = #{publishedDt},
+	      </if>
+	      <if test='deliveryPrice != null and deliveryPrice != ""'>
+	        DELIVERY_PRICE = #{deliveryPrice},
+	      </if>
+	      <if test='category != null and category != ""'>
+	        CATEGORY = #{category},
+	      </if>
+	      <if test='goodsSpec!= null and goodsSpec != ""'>
+	        GOODS_SPEC = #{goodsSpec},
+	      </if>
+	      <if test='intro != null and intro != ""'>
+	        INTRO = #{intro},
+	      </if>
+	      <if test='goodsFileName != null and goodsFileName != ""'>
+	        GOODS_FILE_NAME = #{goodsFileName},
+	      </if>
+	    </set>
+		WHERE 
+				GOODS_CD = #{goodsCd}
+	</update>	
+	
+	<delete id="deleteGoods" parameterType="int">
+		DELETE FROM GOODS WHERE GOODS_CD = #{goodsCd}	 
+	</delete>
+	
+</mapper>
